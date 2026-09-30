@@ -1,0 +1,2 @@
+export function el(tag,attrs={},...children){const n=document.createElement(tag);for(const [k,v]of Object.entries(attrs)){if(k==='class')n.className=v;else if(k==='text')n.textContent=v;else if(k.startsWith('on'))n.addEventListener(k.slice(2).toLowerCase(),v);else if(v!==false&&v!=null)n.setAttribute(k,v===true?'':String(v));}for(const c of children.flat(Infinity)){if(c!=null)n.append(typeof c==='string'?document.createTextNode(c):c);}return n;}
+export const text=(tag,value,cls='')=>el(tag,{class:cls,text:value});
