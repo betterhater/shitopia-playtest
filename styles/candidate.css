@@ -1,0 +1,39 @@
+/* v0.5: visual stage stays fixed; dialogue and the document grow naturally. */
+.scene-frame{--visual-stage-height:calc(100dvh - 160px);height:auto;min-height:var(--visual-stage-height);background:var(--backdrop-tail-color,rgb(38,60,44));overflow:hidden}
+.scene-frame .scene-backdrop{inset:0 0 auto;height:var(--visual-stage-height)}
+.scene-frame .portrait-stage{top:calc(var(--visual-stage-height)*.4);bottom:auto;height:calc(var(--visual-stage-height)*.6)}
+.scene-frame .portrait{width:min(72%,calc(var(--visual-stage-height)*.4))}
+.portrait-visual-wrapper{width:100%;height:100%;transform:translateY(-30%) scale(1.2);transform-origin:center bottom}
+.scene-overlay{height:auto;min-height:0;margin-top:var(--dialogue-top);padding:0}
+.scene-overlay .scene-panel{height:auto;max-height:none;display:flex;flex-direction:column;gap:10px;overflow:visible;padding:12px;background:rgba(255,253,246,.80)}
+.scene-panel .panel-heading{white-space:normal;overflow:visible;line-height:1.5}
+.scene-panel .panel-content{min-height:0;overflow:visible;padding:0}
+.scene-panel .panel-actions{flex:none;padding-top:8px}
+.scene-panel .panel-actions:empty{display:none}
+.scene-panel .choices{grid-template-columns:1fr}
+.scene-panel .choices.compact{grid-template-columns:repeat(2,minmax(0,1fr))}
+.scene-panel .choices button{padding:10px 12px;font-size:1rem;min-width:0}
+.shell.posttest-shell{padding-bottom:calc(var(--footer-height,76px) + env(safe-area-inset-bottom))}
+.shell .topbar{flex-wrap:nowrap;justify-content:space-between;gap:clamp(3px,1vw,10px)}
+.posttest-shell:has(.game-screen) .topbar{min-height:64px;margin-bottom:6px}
+.shell .brand{min-width:0;white-space:nowrap;font-size:clamp(.70rem,2.1vw,1rem);letter-spacing:0}
+.shell .brand small{font-size:clamp(6px,1vw,9px);letter-spacing:clamp(0px,.1vw,1px)}
+.shell .top-actions{width:auto;flex-wrap:nowrap;flex-shrink:0;gap:clamp(2px,.5vw,8px)}
+.shell .topbar .top-actions button{font-size:clamp(.64rem,1.5vw,.85rem);padding:6px clamp(3px,.6vw,10px);min-height:38px;white-space:nowrap}
+.result-visual{--flush-drain-x:50%;--flush-drain-y:41.5%;width:min(100%,246.6667px);max-width:280px;height:auto;aspect-ratio:2/3}
+.result-visual .result-toilet img,.result-visual .result-portrait img{width:100%;height:100%;object-fit:fill}
+.result-card.flushing .result-mover{animation:flush-to-water 2.1s linear forwards}
+.result-card.flushing .result-portrait{animation:flush-spin 2.1s linear forwards}
+.result-card.flushing .result-toilet{animation:none}
+.result-blackout{animation:flush-blackout 2.1s linear forwards}
+@keyframes flush-to-water{0%{transform:translate(0,0)}65%{transform:translate(var(--flush-dx),var(--flush-dy))}90%,100%{transform:translate(var(--flush-dx),var(--flush-dy))}}
+@keyframes flush-spin{0%{transform:rotate(0) scale(1);opacity:1}65%{transform:rotate(440deg) scale(.18);opacity:1}90%{transform:rotate(700deg) scale(.025);opacity:.65}100%{transform:rotate(720deg) scale(.005);opacity:0}}
+@keyframes flush-blackout{0%,80%{opacity:0}100%{opacity:1}}
+.ending-visual{position:relative;display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:min-content auto;min-height:0;aspect-ratio:4/5;margin:20px 0;background:rgb(38,60,44);border-radius:12px;overflow:hidden}
+.ending-visual::before{content:'';grid-area:1/1;aspect-ratio:8/5;pointer-events:none}
+.ending-visual .ending-art{position:absolute;inset:0 0 auto;height:auto;aspect-ratio:4/5;margin:0}
+.ending-visual .ending-art img{width:100%;height:100%;max-height:none;object-fit:cover}
+.ending-story-panel{grid-area:2/1;position:relative;z-index:1;background:rgba(255,253,246,.82);padding:clamp(16px,3vw,28px);min-height:0;overflow:visible;backdrop-filter:blur(3px)}
+.ending-story-panel .ending-story{font-size:1rem;line-height:1.9;margin:0}
+@media(max-width:600px){.scene-overlay .scene-panel{background:rgba(255,253,246,.84)}.result-visual{width:min(100%,220px)}}
+@media(prefers-reduced-motion:reduce){.result-card.flushing .result-mover{animation:none;transform:translate(var(--flush-dx),var(--flush-dy))}.result-card.flushing .result-portrait{animation:none;transform:scale(.08);opacity:1}.result-blackout{animation:flush-blackout .38s linear forwards!important;opacity:0;transition:none}}

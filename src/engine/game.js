@@ -6,6 +6,7 @@ import {effects} from './effects.js';
 import {grant} from './achievements.js';
 import {resolveResult} from '../minigames/adapter.js';
 import {hubFor} from '../ui/navigation.js';
+import {storyLineText} from '../ui/story-line.js';
 export class Engine{
  constructor(game){this.game=game;}
  get run(){return this.game.run;}
@@ -18,7 +19,7 @@ export class Engine{
  const next=n.branches?n.branches.find(b=>check(b.condition,r,this.game.meta))?.next:n.next;
  if(!next){this.leave();return;}r.node=next;r.line=0;if(graph[next].location)r.location=graph[next].location;
  }throw Error('Automatic graph cycle');}
- advance(){if(this.run.mode!=='story')return;const n=graph[this.run.node],line=n.lines[this.run.line];if(line){this.run.history.push({source:line.source,text:line.text});this.run.line++;if(line.after)effects(this.game,line.after);}this.settle();}
+ advance(){if(this.run.mode!=='story')return;const n=graph[this.run.node],line=n.lines[this.run.line];if(line){this.run.history.push({source:line.source,text:storyLineText(line,this.run)});this.run.line++;if(line.after)effects(this.game,line.after);}this.settle();}
  options(){const n=graph[this.run.node];return (n?.choices||[]).filter(o=>check(o.condition,this.run,this.game.meta));}
  choose(id){if(this.run.mode!=='choice')throw Error('No active choice');const o=this.options().find(o=>o.id===id);if(!o||o.disabled&&check(o.disabled,this.run,this.game.meta))throw Error('Unavailable choice');this.snapshot('option');effects(this.game,[{type:'seen',id:o.source},...(o.effects||[])]);this.run.history.push({option:o.id});this.goto(o.next);}
  result(id){if(this.run.mode!=='minigame'||!this.run.pending)throw Error('No minigame pending');const next=resolveResult(this.run.pending,id);this.run.history.push({result:id});this.goto(next);}

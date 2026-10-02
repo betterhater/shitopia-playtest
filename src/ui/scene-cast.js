@@ -1,49 +1,28 @@
-// Pure slot selection: rebuilds the same stage from story history after save/load.
-export function resolveCast(history,current,scope,parseSpeaker,playerParticipates=false,future=[]){
+// Reconstruct from displayed story beats, never from renders or elapsed time.
+// Choices/results count too; automatic zero-line routing is not a visible beat.
+export function castBeats(history,current,scope,parseSpeaker){
  const boundary=history.findLastIndex(h=>h.event===scope||h.interaction===scope);
- const segment=boundary>=0?history.slice(boundary+1):[];
- const appeared=[];
- for(const line of [...segment.map(h=>h.text).filter(Boolean),current].filter(Boolean)){
-  const id=parseSpeaker(line).speaker;
-  if(id&&!appeared.includes(id))appeared.push(id);
- }
- const active=current?parseSpeaker(current).speaker:null;
- if(!appeared.length)return {left:null,right:null,active};
- const playerSeen=appeared.includes('NPC-001');
- if(playerSeen){
-  const candidates=appeared.filter(id=>id!=='NPC-001');
-  return {left:playerSeen?'NPC-001':null,right:active&&active!=='NPC-001'?active:candidates.at(-1)||null,active};
- }
- let left=appeared[0],right=appeared[1]||null;
- for(const id of appeared.slice(2)){
-  if(id===left||id===right)continue;
-  const nextLeft=future.indexOf(left),nextRight=future.indexOf(right);
-  if(nextLeft<0||(nextRight>=0&&nextLeft>nextRight))left=id;else right=id;
- }
- if(active&&!([left,right].includes(active)))right=active;
- return {left,right,active};
+ const segment=boundary>=0?history.slice(boundary+1):history;
+ const beats=segment.filter(h=>h.text||h.option||h.result).map(h=>h.text?parseSpeaker(h.text).speaker:null);
+ if(current)beats.push(parseSpeaker(current).speaker);
+ return beats;
 }
-export function advanceCast(previous,current,scope,parseSpeaker,playerParticipates=false,future=[]){
- const cast=previous?.scope===scope?{...previous}:{scope,left:null,right:null,active:null};
- const id=current?parseSpeaker(current).speaker:null;
- cast.active=id;
- if(!id)return cast;
- if(id==='NPC-001'){
-  if(cast.left&&cast.left!==id){
-   if(!cast.right)cast.right=cast.left;
-   else{const leftNext=future.indexOf(cast.left),rightNext=future.indexOf(cast.right);
-    if(leftNext>=0&&(rightNext<0||leftNext<rightNext))cast.right=cast.left;}
-  }
-  cast.left=id;if(cast.right===id)cast.right=null;return cast;
+export function silentProgressCount(beats,id){const last=beats.lastIndexOf(id);return last<0?Infinity:beats.length-1-last;}
+export function recentCastCandidates(beats){return [...new Set(beats.filter(Boolean))].filter(id=>silentProgressCount(beats,id)<2);}
+export function resolveCast(history,current,scope,parseSpeaker){
+ const beats=castBeats(history,current,scope,parseSpeaker),last=new Map();let left=null,right=null;
+ for(let i=0;i<beats.length;i++){
+  const id=beats[i];if(id)last.set(id,i);
+  if(left&&i-last.get(left)>=2)left=null;if(right&&i-last.get(right)>=2)right=null;
+  if(!id||id===left||id===right)continue;
+  // A lone player starts on the right, leaving the first NPC's stable left
+  // slot intact: player -> NPC-A -> NPC-B becomes A-left/B-right.
+  if(id==='NPC-001'&&!right)right=id;else if(!left)left=id;else if(!right)right=id;
+  else if(last.get(left)<=last.get(right))left=id;else right=id;
  }
- if(cast.left==='NPC-001'){
-  if(cast.left===id)cast.left=null;
-  cast.right=id;return cast;
- }
- if(cast.left===id||cast.right===id)return cast;
- if(!cast.left){cast.left=id;return cast;}
- if(!cast.right){cast.right=id;return cast;}
- const leftNext=future.indexOf(cast.left),rightNext=future.indexOf(cast.right);
- if(leftNext<0||(rightNext>=0&&leftNext>rightNext))cast.left=id;else cast.right=id;
- return cast;
+ return {left,right,active:current?parseSpeaker(current).speaker:null};
+}
+// Compatibility: history must be supplied; previous renders never age the cast.
+export function advanceCast(previous,current,scope,parseSpeaker,_participates=false,_future=[],history=[]){
+ return {...resolveCast(history,current,scope,parseSpeaker),scope};
 }

@@ -1,4 +1,4 @@
-// Public runtime catalog — Playtest v0.3.
+// Public runtime catalog — Playtest v0.5 Candidate.
 export const catalog = {
   "records": {
     "NODE-RES-DRGN-001": [
@@ -4111,7 +4111,7 @@ export const catalog = {
   "quiz": [
     {
       "id": "QST-01",
-      "text": "這天你來到便利商店，打算買些東西當成午飯，卻拿好商品後發現自己忘記帶錢，你會怎麼做？",
+      "text": "這天你來到便利商店，打算買些東西當成午飯，卻拿好商品後卻發現自己忘記帶錢，你會怎麼做？",
       "options": [
         {
           "id": "QOPT-01-01",
@@ -4320,16 +4320,26 @@ export const catalog = {
   ],
   "assets": {
     "RAC-DRGN": {
-      "path": "assets/reference/基礎型態參考圖.png",
-      "name": "巨龍"
+      "name": "巨龍",
+      "path": "assets/characters/SPR-NPC-001-DRGN.png",
+      "fallbackPath": "assets/reference/基礎型態參考圖.png",
+      "nativeFacing": "left",
+      "doNotAutoFlip": true,
+      "missing": false
     },
     "SPR-NPC-001-DRGN": {
-      "path": "assets/reference/基礎型態參考圖.png",
-      "name": "巨龍"
+      "name": "巨龍",
+      "path": "assets/characters/SPR-NPC-001-DRGN.png",
+      "fallbackPath": "assets/reference/基礎型態參考圖.png",
+      "nativeFacing": "left",
+      "doNotAutoFlip": true,
+      "missing": false
     },
     "IMG-RES-DRGN": {
-      "path": "assets/reference/基礎型態參考圖.png",
-      "name": "巨龍測驗結果"
+      "name": "巨龍測驗結果",
+      "path": "assets/results/IMG-RES-DRGN.png",
+      "fallbackPath": "assets/reference/基礎型態參考圖.png",
+      "missing": false
     },
     "IMG-RES-REALISTIC-DRGN": {
       "path": "assets/results/IMG-RES-REALISTIC-DRGN.png",
@@ -4337,16 +4347,26 @@ export const catalog = {
       "missing": true
     },
     "RAC-SOUP": {
-      "path": "assets/reference/屎湯基礎參考圖.png",
-      "name": "屎湯"
+      "name": "屎湯",
+      "path": "assets/characters/SPR-NPC-001-SOUP.png",
+      "fallbackPath": "assets/reference/屎湯基礎參考圖.png",
+      "nativeFacing": "left",
+      "doNotAutoFlip": true,
+      "missing": false
     },
     "SPR-NPC-001-SOUP": {
-      "path": "assets/reference/屎湯基礎參考圖.png",
-      "name": "屎湯"
+      "name": "屎湯",
+      "path": "assets/characters/SPR-NPC-001-SOUP.png",
+      "fallbackPath": "assets/reference/屎湯基礎參考圖.png",
+      "nativeFacing": "left",
+      "doNotAutoFlip": true,
+      "missing": false
     },
     "IMG-RES-SOUP": {
-      "path": "assets/reference/屎湯基礎參考圖.png",
-      "name": "屎湯測驗結果"
+      "name": "屎湯測驗結果",
+      "path": "assets/results/IMG-RES-SOUP.png",
+      "fallbackPath": "assets/reference/屎湯基礎參考圖.png",
+      "missing": false
     },
     "IMG-RES-REALISTIC-SOUP": {
       "path": "assets/results/IMG-RES-REALISTIC-SOUP.png",
@@ -4354,16 +4374,26 @@ export const catalog = {
       "missing": true
     },
     "RAC-SHPB": {
-      "path": "assets/reference/羊便便基礎參考圖.png",
-      "name": "羊便便"
+      "name": "羊便便",
+      "path": "assets/characters/SPR-NPC-001-SHPB.png",
+      "fallbackPath": "assets/reference/羊便便基礎參考圖.png",
+      "nativeFacing": "left",
+      "doNotAutoFlip": true,
+      "missing": false
     },
     "SPR-NPC-001-SHPB": {
-      "path": "assets/reference/羊便便基礎參考圖.png",
-      "name": "羊便便"
+      "name": "羊便便",
+      "path": "assets/characters/SPR-NPC-001-SHPB.png",
+      "fallbackPath": "assets/reference/羊便便基礎參考圖.png",
+      "nativeFacing": "left",
+      "doNotAutoFlip": true,
+      "missing": false
     },
     "IMG-RES-SHPB": {
-      "path": "assets/reference/羊便便基礎參考圖.png",
-      "name": "羊便便測驗結果"
+      "name": "羊便便測驗結果",
+      "path": "assets/results/IMG-RES-SHPB.png",
+      "fallbackPath": "assets/reference/羊便便基礎參考圖.png",
+      "missing": false
     },
     "IMG-RES-REALISTIC-SHPB": {
       "path": "assets/results/IMG-RES-REALISTIC-SHPB.png",
@@ -4371,16 +4401,26 @@ export const catalog = {
       "missing": true
     },
     "RAC-STIC": {
-      "path": "assets/reference/牽絲基礎參考圖.png",
-      "name": "牽絲"
+      "name": "牽絲",
+      "path": "assets/characters/SPR-NPC-001-STIC.png",
+      "fallbackPath": "assets/reference/牽絲基礎參考圖.png",
+      "nativeFacing": "left",
+      "doNotAutoFlip": true,
+      "missing": false
     },
     "SPR-NPC-001-STIC": {
-      "path": "assets/reference/牽絲基礎參考圖.png",
-      "name": "牽絲"
+      "name": "牽絲",
+      "path": "assets/characters/SPR-NPC-001-STIC.png",
+      "fallbackPath": "assets/reference/牽絲基礎參考圖.png",
+      "nativeFacing": "left",
+      "doNotAutoFlip": true,
+      "missing": false
     },
     "IMG-RES-STIC": {
-      "path": "assets/reference/牽絲基礎參考圖.png",
-      "name": "牽絲測驗結果"
+      "name": "牽絲測驗結果",
+      "path": "assets/results/IMG-RES-STIC.png",
+      "fallbackPath": "assets/reference/牽絲基礎參考圖.png",
+      "missing": false
     },
     "IMG-RES-REALISTIC-STIC": {
       "path": "assets/results/IMG-RES-REALISTIC-STIC.png",
@@ -4388,184 +4428,233 @@ export const catalog = {
       "missing": true
     },
     "IMG-UI-TOILET": {
-      "path": "assets/ui/IMG-UI-TOILET.png",
       "name": "馬桶",
-      "missing": true
+      "path": "assets/ui/IMG-UI-TOILET.png",
+      "missing": false
     },
     "NPC-001": {
-      "path": "assets/characters/NPC-001.png",
       "name": "用戶名",
-      "missing": true
+      "path": "assets/characters/SPR-NPC-001-DRGN.png",
+      "fallbackPath": "assets/reference/基礎型態參考圖.png",
+      "nativeFacing": "left",
+      "doNotAutoFlip": true,
+      "missing": false,
+      "variants": [
+        "SPR-NPC-001-DRGN",
+        "SPR-NPC-001-SHPB",
+        "SPR-NPC-001-SOUP",
+        "SPR-NPC-001-STIC"
+      ]
     },
     "NPC-002": {
-      "path": "assets/characters/NPC-002.png",
       "name": "小屎朋友 B",
-      "missing": true
+      "path": "assets/characters/NPC-002.png",
+      "nativeFacing": "left",
+      "doNotAutoFlip": false,
+      "missing": false
     },
     "NPC-003": {
-      "path": "assets/characters/NPC-003.png",
       "name": "小屎朋友 A",
-      "missing": true
+      "path": "assets/characters/NPC-003.png",
+      "nativeFacing": "left",
+      "doNotAutoFlip": false,
+      "missing": false
     },
     "NPC-004": {
-      "path": "assets/characters/NPC-004.png",
       "name": "醉醺醺的酒客",
-      "missing": true
+      "path": "assets/characters/NPC-004.png",
+      "nativeFacing": "left",
+      "doNotAutoFlip": false,
+      "missing": false
     },
     "NPC-005": {
-      "path": "assets/characters/NPC-005.png",
       "name": "酒館老闆",
-      "missing": true
+      "path": "assets/characters/NPC-005.png",
+      "nativeFacing": "left",
+      "doNotAutoFlip": false,
+      "missing": false
     },
     "NPC-006": {
-      "path": "assets/characters/NPC-006.png",
       "name": "冠軍",
-      "missing": true
+      "path": "assets/characters/NPC-006.png",
+      "nativeFacing": "left",
+      "doNotAutoFlip": false,
+      "missing": false
     },
     "NPC-007": {
-      "path": "assets/characters/NPC-007.png",
       "name": "見習屎衛",
-      "missing": true
+      "path": "assets/characters/NPC-007.png",
+      "nativeFacing": "left",
+      "doNotAutoFlip": false,
+      "missing": false
     },
     "NPC-008": {
-      "path": "assets/characters/NPC-008.png",
       "name": "辛勤的農夫",
-      "missing": true
+      "path": "assets/characters/NPC-008.png",
+      "nativeFacing": "left",
+      "doNotAutoFlip": false,
+      "missing": false
     },
     "NPC-009": {
-      "path": "assets/characters/NPC-009.png",
       "name": "鐵甲屎衛",
-      "missing": true
+      "path": "assets/characters/NPC-009.png",
+      "nativeFacing": "left",
+      "doNotAutoFlip": false,
+      "missing": false
     },
     "NPC-010": {
-      "path": "assets/characters/NPC-010.png",
       "name": "披著斗篷的神秘人",
-      "missing": true
+      "path": "assets/characters/NPC-010.png",
+      "nativeFacing": "left",
+      "doNotAutoFlip": false,
+      "missing": false
     },
     "NPC-011": {
-      "path": "assets/characters/NPC-011.png",
       "name": "流浪魔法屎屎林",
-      "missing": true
+      "path": "assets/characters/NPC-011.png",
+      "nativeFacing": "left",
+      "doNotAutoFlip": false,
+      "missing": false
     },
     "NPC-012": {
-      "path": "assets/characters/NPC-012.png",
       "name": "屎特維爾三世",
-      "missing": true
+      "path": "assets/characters/NPC-012.png",
+      "nativeFacing": "left",
+      "doNotAutoFlip": false,
+      "missing": false
     },
     "NPC-013": {
-      "path": "assets/characters/NPC-013.png",
       "name": "長跪不起的老人",
-      "missing": true
+      "path": "assets/characters/NPC-013.png",
+      "nativeFacing": "left",
+      "doNotAutoFlip": false,
+      "missing": false
     },
     "NPC-014": {
-      "path": "assets/characters/NPC-014.png",
       "name": "懶散的商販",
-      "missing": true
+      "path": "assets/characters/NPC-014.png",
+      "nativeFacing": "left",
+      "doNotAutoFlip": false,
+      "missing": false
     },
     "NPC-015": {
-      "path": "assets/characters/NPC-015.png",
       "name": "可疑的社會運動家",
-      "missing": true
+      "path": "assets/characters/NPC-015.png",
+      "nativeFacing": "left",
+      "doNotAutoFlip": false,
+      "missing": false
     },
     "NPC-016": {
-      "path": "assets/characters/NPC-016.png",
       "name": "屎團成員們",
-      "missing": true
+      "path": "assets/characters/NPC-016.png",
+      "nativeFacing": "left",
+      "doNotAutoFlip": false,
+      "missing": false
     },
     "NPC-017": {
-      "path": "assets/characters/NPC-017.png",
       "name": "無所事事的修屎",
-      "missing": true
+      "path": "assets/characters/NPC-017.png",
+      "nativeFacing": "left",
+      "doNotAutoFlip": false,
+      "missing": false
     },
     "NPC-018": {
-      "path": "assets/characters/NPC-018.png",
       "name": "專注的屎學家",
-      "missing": true
+      "path": "assets/characters/NPC-018.png",
+      "nativeFacing": "left",
+      "doNotAutoFlip": false,
+      "missing": false
     },
     "NPC-019": {
-      "path": "assets/characters/NPC-019.png",
       "name": "無家可歸的窮屎人",
-      "missing": true
+      "path": "assets/characters/NPC-019.png",
+      "nativeFacing": "left",
+      "doNotAutoFlip": false,
+      "missing": false
     },
     "NPC-020": {
-      "path": "assets/characters/NPC-020.png",
       "name": "呼呼大睡的見習屎衛",
-      "missing": true
+      "path": "assets/characters/NPC-020.png",
+      "nativeFacing": "left",
+      "doNotAutoFlip": false,
+      "missing": false
     },
     "NPC-021": {
-      "path": "assets/characters/NPC-021.png",
       "name": "灑掃的修屎",
-      "missing": true
+      "path": "assets/characters/NPC-021.png",
+      "nativeFacing": "left",
+      "doNotAutoFlip": false,
+      "missing": false
     },
     "LOC-001": {
-      "path": "assets/backgrounds/LOC-001.png",
       "name": "初屎之地",
-      "missing": true
+      "path": "assets/backgrounds/LOC-001.png",
+      "missing": false
     },
     "LOC-002": {
-      "path": "assets/backgrounds/LOC-002.png",
       "name": "緊鎖的灰色神殿",
-      "missing": true
+      "path": "assets/backgrounds/LOC-002.png",
+      "missing": false
     },
     "LOC-003": {
-      "path": "assets/backgrounds/LOC-003.png",
       "name": "屎聲鼎沸的酒館",
-      "missing": true
+      "path": "assets/backgrounds/LOC-003.png",
+      "missing": false
     },
     "LOC-004": {
-      "path": "assets/backgrounds/LOC-004.png",
       "name": "散發惡臭的小屋",
-      "missing": true
+      "path": "assets/backgrounds/LOC-004.png",
+      "missing": false
     },
     "LOC-005": {
-      "path": "assets/backgrounds/LOC-005.png",
       "name": "中央廣場",
-      "missing": true
+      "path": "assets/backgrounds/LOC-005.png",
+      "missing": false
     },
     "LOC-006": {
-      "path": "assets/backgrounds/LOC-006.png",
       "name": "郊區",
-      "missing": true
+      "path": "assets/backgrounds/LOC-006.png",
+      "missing": false
     },
     "LOC-007": {
-      "path": "assets/backgrounds/LOC-007.png",
       "name": "郊區的破敗神廟",
-      "missing": true
+      "path": "assets/backgrounds/LOC-007.png",
+      "missing": false
     },
     "LOC-008": {
-      "path": "assets/backgrounds/LOC-008.png",
       "name": "刻有詭異痕跡的枯樹",
-      "missing": true
+      "path": "assets/backgrounds/LOC-008.png",
+      "missing": false
     },
     "LOC-009": {
-      "path": "assets/backgrounds/LOC-009.png",
       "name": "坍塌城門",
-      "missing": true
+      "path": "assets/backgrounds/LOC-009.png",
+      "missing": false
     },
     "LOC-010": {
-      "path": "assets/backgrounds/LOC-010.png",
       "name": "冷清商店街",
-      "missing": true
+      "path": "assets/backgrounds/LOC-010.png",
+      "missing": false
     },
     "LOC-011": {
-      "path": "assets/backgrounds/LOC-011.png",
       "name": "神殿內部",
-      "missing": true
+      "path": "assets/backgrounds/LOC-011.png",
+      "missing": false
     },
     "LOC-012": {
-      "path": "assets/backgrounds/LOC-012.png",
       "name": "老舊圖書館",
-      "missing": true
+      "path": "assets/backgrounds/LOC-012.png",
+      "missing": false
     },
     "LOC-013": {
-      "path": "assets/backgrounds/LOC-013.png",
       "name": "下城區",
-      "missing": true
+      "path": "assets/backgrounds/LOC-013.png",
+      "missing": false
     },
     "LOC-014": {
-      "path": "assets/backgrounds/LOC-014.png",
       "name": "上城區",
-      "missing": true
+      "path": "assets/backgrounds/LOC-014.png",
+      "missing": false
     },
     "ITM-001": {
       "path": "assets/items/ITM-001.png",
@@ -4638,79 +4727,79 @@ export const catalog = {
       "missing": true
     },
     "END-A": {
-      "path": "assets/endings/END-A.png",
       "name": "屎托邦傳奇",
-      "missing": true
+      "path": "assets/endings/END-A.png",
+      "missing": false
     },
     "END-AA": {
-      "path": "assets/endings/END-AA.png",
       "name": "帥氣的屎托邦傳奇",
-      "missing": true
+      "path": "assets/endings/END-AA.png",
+      "missing": false
     },
     "END-AAA": {
-      "path": "assets/endings/END-AAA.png",
       "name": "永恆不屎的屎托邦傳奇",
-      "missing": true
+      "path": "assets/endings/END-AAA.png",
+      "missing": false
     },
     "END-AB": {
-      "path": "assets/endings/END-AB.png",
       "name": "屎托邦之火",
-      "missing": true
+      "path": "assets/endings/END-AB.png",
+      "missing": false
     },
     "END-AC": {
-      "path": "assets/endings/END-AC.png",
       "name": "屎托邦之惡",
-      "missing": true
+      "path": "assets/endings/END-AC.png",
+      "missing": false
     },
     "END-AD": {
-      "path": "assets/endings/END-AD.png",
       "name": "屎托邦之夢",
-      "missing": true
+      "path": "assets/endings/END-AD.png",
+      "missing": false
     },
     "END-AE": {
-      "path": "assets/endings/END-AE.png",
       "name": "屎托邦之魔",
-      "missing": true
+      "path": "assets/endings/END-AE.png",
+      "missing": false
     },
     "END-B": {
-      "path": "assets/endings/END-B.png",
       "name": "屎萊姆",
-      "missing": true
+      "path": "assets/endings/END-B.png",
+      "missing": false
     },
     "END-C": {
-      "path": "assets/endings/END-C.png",
       "name": "有屎有終",
-      "missing": true
+      "path": "assets/endings/END-C.png",
+      "missing": false
     },
     "END-D": {
-      "path": "assets/endings/END-D.png",
       "name": "周而復屎",
-      "missing": true
+      "path": "assets/endings/END-D.png",
+      "missing": false
     },
     "END-Z": {
-      "path": "assets/endings/END-Z.png",
       "name": "慘屎當場",
-      "missing": true
+      "path": "assets/endings/END-Z.png",
+      "missing": false
     },
     "END-ZA": {
-      "path": "assets/endings/END-ZA.png",
       "name": "屎無全屎",
-      "missing": true
+      "path": "assets/endings/END-ZA.png",
+      "missing": false
     },
     "END-ZB": {
-      "path": "assets/endings/END-ZB.png",
       "name": "屎溶於水",
-      "missing": true
+      "path": "assets/endings/END-ZB.png",
+      "missing": false
     },
     "END-ZC": {
-      "path": "assets/endings/END-ZC.png",
       "name": "狗改不了吃屎",
-      "missing": true
+      "path": "assets/endings/END-ZC.png",
+      "missing": false
     },
     "END-ZD": {
-      "path": "assets/endings/END-ZD.png",
       "name": "屎亡遊戲",
-      "missing": true
+      "path": "assets/endings/END-ZD.png",
+      "missing": false
     }
   },
   "shop": [
@@ -4746,5 +4835,12 @@ export const catalog = {
       "id": "ITM-013",
       "price": 300
     }
-  ]
+  ],
+  "dialogueVariants": {
+    "NODE-D2-027": {
+      "DMN-DRAGONFRUIT": "火龍果用身體替你擋下了火球！",
+      "DMN-CORN": "玉米用身體替你擋下了火球，在高溫下變成了爆米花，掉在地上一動不動。",
+      "DMN-ENOKI": "金針菇用身體替你擋下了火球，在高溫下散發焦香，被路過的小動物給叼走了。"
+    }
+  }
 };

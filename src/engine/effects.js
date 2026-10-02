@@ -1,5 +1,6 @@
 import {catalog} from '../data/catalog.js';
 import {grant,finishEnding,royalEnding} from './achievements.js';
+export function loseDemon(game){const previous=game.run.demon;if(previous==='DMN-NONE'||!catalog.demons[previous])return false;game.run.demon='DMN-NONE';game.notices??=[];game.notices.push({kind:'info',message:'你失去了自己的屎魔。'});return true;}
 export function effects(game,list=[]){const r=game.run;for(const e of list){switch(e.type){
  case 'knowledge': if(!catalog.knowledge[e.id])throw Error('Unknown knowledge '+e.id);if(!r.knowledge.includes(e.id)){r.knowledge.push(e.id);game.notices??=[];game.notices.push({kind:'knowledge',message:'獲得知識：'+catalog.knowledge[e.id].name});}break;
  case 'item':if(!catalog.items[e.id])throw Error('Unknown item '+e.id);if((r.items[e.id]||0)+(e.amount??1)<0)throw Error('Insufficient item');r.items[e.id]=(r.items[e.id]||0)+(e.amount??1);if((e.amount??1)>0){game.notices??=[];game.notices.push({kind:'item',message:'獲得道具：'+catalog.items[e.id].name+((e.amount??1)>1?' ×'+e.amount:'')});}break;
@@ -7,8 +8,9 @@ export function effects(game,list=[]){const r=game.run;for(const e of list){swit
  case 'flag':r.flags[e.id]=e.value??true;break;
  case 'counter':r.counters[e.id]=(r.counters[e.id]||0)+(e.amount??1);break;
  case 'seen':if(!r.seen.includes(e.id))r.seen.push(e.id);break;
- case 'demon':r.demon=e.id;break;
- case 'betray':r.demon='DMN-NONE';r.flags['FLG-RUN-DEMON-BETRAYED']=true;grant(game.meta,'ACH-8',game.notices);break;
+ case 'demon':if(e.id==='DMN-NONE')loseDemon(game);else r.demon=e.id;break;
+ case 'loseDemon':loseDemon(game);break;
+ case 'betray':loseDemon(game);r.flags['FLG-RUN-DEMON-BETRAYED']=true;grant(game.meta,'ACH-8',game.notices);break;
  case 'achievement':grant(game.meta,e.id,game.notices);break;
  case 'complete':r.completed[e.id]=true;break;
  case 'ending':finishEnding(game,e.id==='royal'?royalEnding(r,r.event):e.id);break;
