@@ -1,5 +1,6 @@
 import {catalog} from '../data/catalog.js';
-export function asset(id){return catalog.assets[id]||{name:id,missing:true};}
+import {assetManifest} from '../data/asset-manifest.js';
+export function asset(id){return assetManifest[id]||catalog.assets[id]||{name:id,missing:true};}
 export function imageElement(id,className=''){
  const a=asset(id),box=document.createElement('div');box.className='asset '+className;box.dataset.assetId=id;
  const fallback=()=>{box.replaceChildren();box.classList.add('missing');const mark=document.createElement('span');mark.className='asset-mark';mark.textContent='◇';const label=document.createElement('span');label.textContent=a.name||id;const code=document.createElement('small');code.textContent=id+' · 素材待補';box.append(mark,label,code);};

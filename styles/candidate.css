@@ -1,9 +1,10 @@
 /* v0.5: visual stage stays fixed; dialogue and the document grow naturally. */
+@import url('./minigames.css');
 .scene-frame{--visual-stage-height:calc(100dvh - 160px);height:auto;min-height:var(--visual-stage-height);background:var(--backdrop-tail-color,rgb(38,60,44));overflow:hidden}
 .scene-frame .scene-backdrop{inset:0 0 auto;height:var(--visual-stage-height)}
 .scene-frame .portrait-stage{top:calc(var(--visual-stage-height)*.4);bottom:auto;height:calc(var(--visual-stage-height)*.6)}
 .scene-frame .portrait{width:min(72%,calc(var(--visual-stage-height)*.4))}
-.portrait-visual-wrapper{width:100%;height:100%;transform:translateY(-30%) scale(1.2);transform-origin:center bottom}
+.portrait-visual-wrapper{width:100%;height:100%;translate:0 -30%;scale:1.2;transform-origin:center bottom}
 .scene-overlay{height:auto;min-height:0;margin-top:var(--dialogue-top);padding:0}
 .scene-overlay .scene-panel{height:auto;max-height:none;display:flex;flex-direction:column;gap:10px;overflow:visible;padding:12px;background:rgba(255,253,246,.80)}
 .scene-panel .panel-heading{white-space:normal;overflow:visible;line-height:1.5}
@@ -33,7 +34,12 @@
 .ending-visual::before{content:'';grid-area:1/1;aspect-ratio:8/5;pointer-events:none}
 .ending-visual .ending-art{position:absolute;inset:0 0 auto;height:auto;aspect-ratio:4/5;margin:0}
 .ending-visual .ending-art img{width:100%;height:100%;max-height:none;object-fit:cover}
-.ending-story-panel{grid-area:2/1;position:relative;z-index:1;background:rgba(255,253,246,.82);padding:clamp(16px,3vw,28px);min-height:0;overflow:visible;backdrop-filter:blur(3px)}
+.ending-story-panel{display:flex;flex-direction:column;justify-content:center;grid-area:2/1;position:relative;z-index:1;background:rgba(255,253,246,.20);padding:clamp(12px,2vw,24px);min-height:0;overflow:visible;backdrop-filter:blur(3px);margin:0 6%;height:100%;border-radius:16px}
 .ending-story-panel .ending-story{font-size:1rem;line-height:1.9;margin:0}
+.ending-visual{grid-template-rows:50% 50%;height:auto;aspect-ratio:4/5}
+.ending-visual::before{aspect-ratio:auto}
+.portrait-visual-wrapper.dragon-player{scale:1.518}
+.ending-credits{margin:10px 0 0;font-size:.75rem;color:var(--muted);overflow-wrap:anywhere}.ending-credits h2{font-size:.8rem;margin-bottom:4px}.ending-credits p{margin:0}
+.walkthrough-link{grid-column:1/-1}.game-screen:has(.formal-minigame) .game-hud{display:none}
 @media(max-width:600px){.scene-overlay .scene-panel{background:rgba(255,253,246,.84)}.result-visual{width:min(100%,220px)}}
 @media(prefers-reduced-motion:reduce){.result-card.flushing .result-mover{animation:none;transform:translate(var(--flush-dx),var(--flush-dy))}.result-card.flushing .result-portrait{animation:none;transform:scale(.08);opacity:1}.result-blackout{animation:flush-blackout .38s linear forwards!important;opacity:0;transition:none}}

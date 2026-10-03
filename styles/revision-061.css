@@ -1,0 +1,65 @@
+/* Playtest 0.6.3: incrementally corrected 0.6.1 presentation rules; collision/state remain in the model. */
+/* AB and CD are two non-wrapping rows; each preserves its existing content hierarchy. */
+.shell .topbar.game-header{display:flex;flex-direction:column;align-items:stretch;gap:6px;min-height:0;padding:6px 0}
+.header-ab{display:flex;align-items:center;justify-content:space-between;gap:clamp(2px,1vw,10px);min-width:0}
+.header-divider{height:1px;background:var(--line);width:calc(100% - 28px);margin:0 auto;flex:none}
+.game-header .game-hud{display:flex;align-items:center;justify-content:space-between;flex-wrap:nowrap;gap:clamp(4px,2vw,24px);margin:0;min-width:0}
+.game-header .location-info{flex:0 1 auto;min-width:0}.game-header .location-info .eyebrow{display:block;font-size:clamp(6px,1.4vw,10px);letter-spacing:.06em;white-space:nowrap}
+.game-header .player-info{display:flex;flex-direction:column;gap:2px;min-width:0;flex:0 1 auto;text-align:right;font-size:clamp(.6rem,1.6vw,.8rem)}
+.player-name{overflow-wrap:anywhere;font-weight:600}.player-details{line-height:1.5;white-space:nowrap;color:var(--muted)}
+.game-header .top-actions{margin-left:auto;flex-wrap:nowrap;width:auto;gap:clamp(2px,.6vw,8px)}.game-header .game-hud h2{font-size:clamp(.75rem,2.5vw,1.3rem)}
+.dialogue-header{position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:32px;padding-bottom:7px}
+.dialogue-header::after{content:'';position:absolute;bottom:0;left:6px;right:6px;height:1px;background:var(--line)}
+.dialogue-header .speaker{margin:0;min-width:0;overflow-wrap:anywhere}
+.dialogue-header .next,.puzzle-dialogue .dialogue-header button{flex:none;margin:0 0 0 auto;min-height:32px;padding:2px 8px;font-size:.85rem}
+.scene-overlay .dialogue .dialogue-header .next{margin-left:auto;margin-top:0}
+.scene-overlay .scene-panel.dialogue{min-height:calc(var(--visual-stage-height) - var(--dialogue-top));border-radius:10px}.puzzle-dialogue:has(.dialogue-header){padding-top:6px}
+.portrait-stage .portraits{inset:0 clamp(64px,4vw,96px);gap:0}
+.scene-frame .portrait{width:min(42%,calc(var(--visual-stage-height)*.4))}
+.scene-frame .portrait.slot-left{left:0}.scene-frame .portrait.slot-right{right:0}
+.portrait-position-wrapper.small-friend{translate:0 15%}
+.notification-stack{top:var(--notice-top,8px);right:var(--notice-right,12px)}
+.playtest-entry{margin:20px 0 8px;font-size:.9rem}
+/* Medium 64px plaid: only the surplus gutters, behind the untouched scene. */
+.formal-minigame.plaid-sides{--plaid-size:64px;--plaid-base:#443a30;--plaid-band:#b0a39322;--plaid-line:#211a1870;background:var(--plaid-base)}
+.formal-minigame.runner.plaid-sides{--plaid-base:#41413d;--plaid-band:#aaa69a22;--plaid-line:#20211f70}
+.formal-minigame::before,.formal-minigame::after{content:'';position:absolute;top:0;bottom:0;width:50%;pointer-events:none;z-index:0;background:repeating-linear-gradient(0deg,transparent 0 30px,var(--plaid-line) 30px 32px,var(--plaid-band) 32px 62px,var(--plaid-line) 62px 64px),repeating-linear-gradient(90deg,transparent 0 30px,var(--plaid-line) 30px 32px,var(--plaid-band) 32px 62px,var(--plaid-line) 62px 64px);background-size:var(--plaid-size) var(--plaid-size)}
+.formal-minigame::before{left:0}.formal-minigame::after{right:0}
+.puzzle.reporting{background:transparent}.puzzle.reporting::before,.puzzle.reporting::after{display:none}
+.puzzle-report-stage:empty{display:none}
+.puzzle-report-stage{color:var(--ink)}
+.demon-wrapper{position:absolute;width:var(--demon-display-size,0px);height:var(--demon-display-size,0px);pointer-events:none;transform:none;scale:1;z-index:1}
+.demon-wrapper .demon-image,.demon-wrapper .demon-image img{width:100%;height:100%;object-fit:contain;object-position:center;transform:none;scale:1}
+.puzzle-room,.game-screen .puzzle-room{width:min(100%,calc(var(--puzzle-room-height,calc(100dvh - 145px))*.5625));z-index:1}
+.puzzle-exit{position:absolute;top:6px;right:6px;z-index:5;min-height:36px;padding:5px 10px;font-size:.8rem;background:#f3efe5db}
+.puzzle-hotspot:disabled{cursor:default;opacity:1}.puzzle-hotspot:disabled:hover{background:transparent}
+.puzzle-toast{top:8px;max-width:calc(100% - 24px)}
+.puzzle-inventory{position:absolute;bottom:0;left:50%;translate:-50% 0;width:100%;margin:0;z-index:3}
+.inventory-slots{inset:0;display:block}.inventory-positioner{position:absolute;width:13%;height:76%;translate:-50% -50%}
+.inventory-slot{position:relative;width:100%;height:100%;display:block;border:0}
+.inventory-slot.selected{border:0;box-shadow:inset 0 0 0 3px #ffe79a,0 0 8px #ffe79a}
+.inventory-slot:active:not(:disabled){transform:none}
+.inventory-slot img{position:absolute;left:50%;top:50%;translate:-50% -50%;transform:none;width:100%;height:100%;max-width:100%;max-height:100%;margin:0;object-fit:contain}
+.puzzle-dialogue{z-index:4}.runner-stage{z-index:1;height:calc(100dvh - 170px);width:min(100%,calc((100dvh - 170px)*.68))}
+.runner-success{width:min(420px,calc(100% - 24px));text-align:center;padding:24px}.runner-success p{font-size:1.15rem}.runner-success button{display:block;margin:auto;min-width:100px;text-align:center}
+.notebook-viewer{width:min(1600px,calc(100vw - 8px));max-width:none;max-height:98dvh;background:transparent;border:0;padding:0;box-shadow:none;overflow:hidden}
+.notebook-viewer .viewer-controls{position:relative;color:#fff9e8;margin:0 4px 4px;font-size:.8rem;min-height:38px}
+.notebook-viewer .viewer-controls button{min-height:36px;padding:4px 10px}
+.notebook-spread{position:relative;display:block;padding:0;min-height:0;width:min(100%,calc((98dvh - 46px)*1.25));aspect-ratio:5/4;margin:auto;background:none;gap:0}
+.notebook-art{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;pointer-events:none}
+.notebook-page{position:absolute;max-height:none;padding:0;overflow-y:auto;overflow-x:hidden;scrollbar-width:none;overscroll-behavior:contain;min-width:0;font-size:16px;line-height:1.7}
+.notebook-page::-webkit-scrollbar{display:none;width:0;height:0}.notebook-page:focus-visible{outline:2px solid #96743d;outline-offset:2px}
+.notebook-page .clue,.notebook-page .inference,.notebook-page button{font-size:16px;line-height:1.7;overflow-wrap:anywhere}
+.notebook-right{display:flex;flex-direction:column;gap:12px}.notebook-right button{padding:6px;flex:none}.notebook-page .clue{text-align:left;min-height:44px;padding:6px 0}
+.notebook-page .inference input{flex:none}.notebook-page .evidence-archive summary,.notebook-page .evidence-archive button{font-size:16px}
+.paper-viewer{width:calc(100vw - 8px);max-width:1100px;max-height:98dvh;padding:0;background:transparent;border:0;box-shadow:none;overflow:hidden}
+.paper-viewer .viewer-controls{color:#fff9e8;margin:0 4px 4px;min-height:38px;font-size:.8rem}
+.paper-view{aspect-ratio:9/8;width:min(100%,calc((98dvh - 46px)*1.125));max-width:1100px;margin:auto}
+.paper-content{position:absolute;right:auto;display:flex;align-items:center;justify-content:center;overflow:visible}
+.paper-fixed{width:max-content;font-size:24px;line-height:1.7;transform:none}.paper-line{line-height:1.7;text-align:left}
+.hazard-anchor{position:absolute;width:20%;aspect-ratio:1;translate:-50% -50%;pointer-events:none}
+.hazard-visual{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+.hazard-visual .runner-entity{position:static;width:100%;height:100%;max-height:none;object-fit:contain;transform:none;transform-origin:center}
+@media(max-width:767px){.portrait-stage .portraits{inset:0 clamp(0px,1vw,8px);gap:0}.scene-frame .portrait{width:42%}.shell .topbar.game-header{gap:4px}.game-header .header-ab .brand{font-size:clamp(9px,2.6vw,16px)}.game-header .header-ab .top-actions button{font-size:clamp(9px,2.7vw,12px);padding:4px clamp(2px,.7vw,5px);min-height:32px}.game-header .player-info{font-size:clamp(9px,2.8vw,12px)}.formal-minigame::before,.formal-minigame::after{display:none}.puzzle-exit{font-size:.7rem;padding:4px 7px}.puzzle-dialogue{left:3%;right:3%;padding:6px 10px}.notebook-viewer{width:calc(100vw - 4px)}.runner-stage{height:calc(100dvh - 145px);width:min(100%,calc((100dvh - 145px)*.68))}}
+
+.ending-story-panel .ending-story{color:#18291f;text-shadow:0 0 3px #fffdf6,0 1px 1px #fffdf6}

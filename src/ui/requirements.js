@@ -9,7 +9,10 @@ export function publicRequirement(condition){
  if(condition.all)return condition.all.length>0&&condition.all.every(publicRequirement);
  return !!(condition.kn||condition.item||condition.gg!==undefined);
 }
-export function lockedProgression(condition,run,meta){return publicRequirement(condition)&&!check(condition,run,meta);}
+export const SCHOLAR_COPY='OPT-LOC-012-008';
+// Narrative availability and execution eligibility are deliberately independent.
+export function scholarStage(run){return run.knowledge.includes('KNW-049');}
+export function lockedProgression(condition,run,meta,id){return (id===SCHOLAR_COPY?scholarStage(run):publicRequirement(condition))&&!check(condition,run,meta);}
 
 const duelIds={'OPT-LOC-003-004':{event:'EVT-C2',knowledge:['KNW-004'],fee:50},'OPT-LOC-003-005':{event:'EVT-C3',knowledge:['KNW-004','KNW-011'],fee:100}};
 export function duelRequirement(id){return duelIds[id]||null;}

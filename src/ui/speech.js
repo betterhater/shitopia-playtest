@@ -1,7 +1,7 @@
 import {catalog} from '../data/catalog.js';
 import {normalizeDisplayText} from './display-text.js';
 
-const aliases={'小屎朋友Ａ':'NPC-003','小屎朋友Ｂ':'NPC-002','小屎朋友A':'NPC-003','小屎朋友B':'NPC-002','老人':'NPC-013','屎特維爾三世':'NPC-012','你與醉醺醺的酒客':'NPC-004'};
+const aliases={'手帳':'NPC-020','小屎朋友Ａ':'NPC-003','小屎朋友Ｂ':'NPC-002','小屎朋友A':'NPC-003','小屎朋友B':'NPC-002','老人':'NPC-013','屎特維爾三世':'NPC-012','你與醉醺醺的酒客':'NPC-004'};
 const normalized=s=>s.replaceAll(' ','');
 // Recognition reads the original source; only the display text loses its speaker prefix.
 export function parseSpeech(source,{name='旅人',demon=''}={}){

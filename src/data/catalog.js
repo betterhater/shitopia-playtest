@@ -1,4 +1,4 @@
-// Public runtime catalog — Playtest v0.5 Candidate.
+// Public runtime catalog — Playtest v0.6.3.
 export const catalog = {
   "records": {
     "NODE-RES-DRGN-001": [
@@ -4841,6 +4841,28 @@ export const catalog = {
       "DMN-DRAGONFRUIT": "火龍果用身體替你擋下了火球！",
       "DMN-CORN": "玉米用身體替你擋下了火球，在高溫下變成了爆米花，掉在地上一動不動。",
       "DMN-ENOKI": "金針菇用身體替你擋下了火球，在高溫下散發焦香，被路過的小動物給叼走了。"
+    }
+  },
+  "displayCorrections": {
+    "年經宅男": "年輕宅男",
+    "手指典籍螢幕": "手指點擊螢幕",
+    "第二次典籍點擊衣櫃": "第二次點擊衣櫃",
+    "在森林林鬼鬼祟祟": "在森林裡鬼鬼祟祟",
+    "聲音還是響了一頁！": "聲音還是響了一夜！",
+    "勾選勾選選擇": "勾選選擇"
+  },
+  "minigameRules": {
+    "F2": {
+      "password": "682",
+      "inventorySlots": 6,
+      "noFail": true,
+      "persistent": true
+    },
+    "D4": {
+      "goal": 300,
+      "initialRow": 4,
+      "failRow": -1,
+      "persistent": false
     }
   }
 };
