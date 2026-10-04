@@ -42,4 +42,5 @@ export const cardAssets = {
   "SP002": "assets/minigames/cards/SP002.png",
   "SP003": "assets/minigames/cards/SP003.png"
 };
-export const cardAssetURL = id => cardAssets[id] ? new URL("../../../"+cardAssets[id],import.meta.url).href : null;
+import {imageURL} from '../../services/image-source.js';
+export const cardAssetURL = id => cardAssets[id] ? imageURL(cardAssets[id]) : null;

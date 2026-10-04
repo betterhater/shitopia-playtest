@@ -4,6 +4,8 @@ import {productionRuntimeSeed} from './runtime-seed.js';
 import {expandDeck} from './decks.js';
 import {shuffled} from './rules.js';
 import {assertBoardOccupancy} from './board-integrity.js';
+import {preloadMinigame} from '../shared/view.js';
+import {cardAssets} from './assets.js';
 export const CARDS_QA_KEY='shitopia:qa:cards:v1:';
 // Reusable boundary for future formal events. No story effect or reward lives here.
 export function restoreCardsMatch(progress,{playerDeck='DUEL',tier,qaOnly=false,seed=1,rules,sourceEventId=null,enemyProfile='CARD_ENEMY_CHAMPION'}={}){
@@ -16,7 +18,7 @@ export function restoreCardsMatch(progress,{playerDeck='DUEL',tier,qaOnly=false,
 export function mountCardsController(host,{progress,playerDeck='DUEL',tier,qaOnly=false,seed=1,rules,sourceEventId=null,enemyProfile='CARD_ENEMY_CHAMPION',onChange=()=>{},onResult=()=>{},onExit=()=>{},...viewOptions}){
  let state;try{state=restoreCardsMatch(progress,{playerDeck,tier,qaOnly,seed,rules,sourceEventId,enemyProfile});}catch(error){if(error.name!=='BoardOccupancyError')throw error;console.error(error.message);const alert=document.createElement('p');alert.setAttribute('role','alert');alert.textContent='卡牌戰場存檔狀態異常，已停止載入；請讀取其他存檔。';host.append(alert);return ()=>alert.remove();}let sent=false;
  const persist=()=>{if(state.resultLocked&&state.winner==='enemy')recordCardsResult(progress,'FAIL');onChange(progress);};
- persist();return mountCards(host,{...viewOptions,qaOnly,state,onChange:persist,onExit:()=>{persist();onExit();},onResult:result=>{if(sent)return;sent=true;state.resultDelivered=true;recordCardsResult(progress,result);persist();onResult(result);}});
+ const preload=preloadMinigame(Object.values(cardAssets),20000,{critical:[cardAssets.CARD_BATTLEFIELD_TAVERN,cardAssets.CHAMPION_CARD_BACK,cardAssets.FRAME_LM,cardAssets.FRAME_UM,cardAssets.FRAME_EFFECT]});persist();const dispose=mountCards(host,{...viewOptions,qaOnly,state,onChange:persist,onExit:()=>{persist();onExit();},onResult:result=>{if(sent)return;sent=true;state.resultDelivered=true;recordCardsResult(progress,result);persist();onResult(result);}});return ()=>{preload.cancel();dispose();};
 }
 export function loadCardsQA(storage,key=CARDS_QA_KEY){try{return JSON.parse(storage.getItem(key))||freshCardsRun();}catch{return freshCardsRun();}}
 export const formalCardsProgress=run=>ensureCardsRun(run);

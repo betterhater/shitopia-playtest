@@ -1,9 +1,10 @@
 import {el,text} from '../../ui/dom.js';
 import {cards} from './data.js';
 import {currentAtk} from './model.js';
-import {cardAssetURL} from './assets.js';
+import {cardAssetURL,cardAssets} from './assets.js';
+import {setImageSource} from '../../services/image-source.js';
 import {cardDisplayText} from './display-text.js';
-export function artFor(id,cls=''){const url=cardAssetURL(id);return url?el('img',{src:url,alt:'',class:cls,draggable:'false'}):el('div',{class:'card-art-fallback '+cls},text('strong',id),text('span',cards[id]?.nameZh||id),text('small','圖像待提供'));}
+export function artFor(id,cls=''){const url=cardAssetURL(id);return url?setImageSource(el('img',{alt:'',class:cls,draggable:'false'}),cardAssets[id],'high'):el('div',{class:'card-art-fallback '+cls},text('strong',id),text('span',cards[id]?.nameZh||id),text('small','圖像待提供'));}
 export function cardFace(card,{thumbnail=false}={}){
  const d=cards[card.cardId||card],instance=typeof card==='object'?card:null;
  const face=el('div',{class:`card-face ${d.frameType==='EFFECT'?'effect-face':'monster-face'} ${thumbnail?'card-thumbnail':''}`,'data-card-id':d.cardId,'data-frame':d.frameType});

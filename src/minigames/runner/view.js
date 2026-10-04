@@ -1,5 +1,6 @@
 import {el,text} from '../../ui/dom.js';
 import {minigameAssets as assets,assetURL} from '../assets.js';
+import {setImageBackground,setImageSource} from '../../services/image-source.js';
 import {art,gameButton} from '../shared/view.js';
 import {freshRunner,stepRunner,moveLane,tapLane,rowY,phaseFor,keyDirection,isInvincible} from './model.js';
 import {hazardElement,laneCenter} from './hazard-view.js';
@@ -9,14 +10,14 @@ export function mountRunner(host,{onResult,onExit,random=Math.random}){
  const a=assets.runner,s=freshRunner();let raf,last=null,disposed=false,finished=false,resultDialog=null,cancelFailure=null;
 
  const stage=el('div',{class:'runner-stage',tabindex:0,'aria-label':'三線跑道，使用左右方向鍵或 A、D 切換相鄰路線'}),tiles=el('div',{class:'runner-road'});
- for(let i=0;i<3;i++)tiles.append(el('div',{class:'road-tile'+(i%2?' road-reflected':''),style:`background-image:url("${assetURL(a.road)}")`}));
+ for(let i=0;i<3;i++){const tile=el('div',{class:'road-tile'+(i%2?' road-reflected':'')});setImageBackground(tile,a.road);tiles.append(tile);}
  const player=art(a.playerRun1,'奔跑中的主角','runner-player'),crowd=el('div',{class:'runner-crowd','aria-hidden':'true'},art(a.chaserCrowd,'','crowd-art')),entities=el('div',{class:'runner-entities'});
  stage.append(tiles,crowd,entities,player,...['左側跑道','中央跑道','右側跑道'].map((name,i)=>gameButton('',()=>tapLane(s,i),{class:'runner-lane',style:`left:${i*100/3}%;`,'aria-label':name})));
  const root=el('section',{class:'formal-minigame runner plaid-sides'},stage);host.append(root);
  const fitStage=()=>{if(!root.isConnected)return;const footer=document.querySelector('.footer');const bottom=footer?footer.getBoundingClientRect().top:innerHeight;stage.style.height=Math.max(280,bottom-stage.getBoundingClientRect().top-8)+'px';};const observer=new ResizeObserver(fitStage);observer.observe(host);window.addEventListener('resize',fitStage);requestAnimationFrame(fitStage);
  const nodes=new Map();let previousFrame=-1;
  function draw(){stage.dataset.progress=s.progress.toFixed(2);stage.dataset.row=String(s.row);stage.dataset.lane=String(s.lane);player.style.left=`${(s.visualLane+.5)*100/3}%`;player.style.top=`${rowY(s.visualRow)*100}%`;
-  const frame=Math.floor(s.time*8*phaseFor(s.progress).speed)%2;if(frame!==previousFrame){player.src=assetURL(frame?a.playerRun2:a.playerRun1);player.style.transform=`translate(-50%,-${(frame?475:479)/512*100}%)`;previousFrame=frame;}
+  const frame=Math.floor(s.time*8*phaseFor(s.progress).speed)%2;if(frame!==previousFrame){setImageSource(player,frame?a.playerRun2:a.playerRun1,'high');player.style.transform=`translate(-50%,-${(frame?475:479)/512*100}%)`;previousFrame=frame;}
   player.classList.toggle('invincible',isInvincible(s));stage.dataset.invincible=String(isInvincible(s));player.style.opacity=isInvincible(s)?String(.45+.55*Math.abs(Math.sin(s.time*16))):'1';
   tiles.style.transform=roadTransform(s.visualDistance);stage.dataset.roadDistance=String(s.visualDistance);stage.dataset.roadOffset=String(roadOffset(s.visualDistance));
   const live=new Set(s.entities.map(e=>e.id));for(const [id,node]of nodes)if(!live.has(id)){node.remove();nodes.delete(id);}

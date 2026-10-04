@@ -30,4 +30,4 @@ export const minigameAssets={
     "chaserCrowd": "assets/minigames/runner/chaserCrowd.png"
   }
 };
-export const assetURL=path=>{const url=new URL("../../"+path,import.meta.url);if(path.includes('/runner/'))url.searchParams.set('v','066');return url.href;};
+export {imageURL as assetURL} from '../services/image-source.js';

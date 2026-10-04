@@ -10,7 +10,8 @@ import {selectCard,selectBoardTarget,isHighlighted} from './selection.js';
 import {animateEvents,majorPhase} from './animation.js';
 import {showCardsVictory} from './victory-view.js';
 import {runFailureTransition} from '../shared/failure-transition.js';
-import {cardAssetURL} from './assets.js';
+import {cardAssetURL,cardAssets} from './assets.js';
+import {setImageBackground} from '../../services/image-source.js';
 import {playCardTransition,transitionForRound} from './transitions.js';
 import {cardTransitions} from './transition-assets.js';
 import {BATTLEFIELD_LAYOUT,rectStyle} from './layout.js';
@@ -23,11 +24,11 @@ export function mountCards(host,{state:s,onChange=()=>{},onResult,onExit=()=>{},
  s.presentation??={battleStarted:s.phase!=='OPENING',roundShown:s.phase==='OPENING'?0:s.roundIndex};
  const previousBoard=new Set();s.ui={draggedCard:null,pendingTarget:null,pendingLane:null,pendingDiscard:null,selectedInstanceId:null,...s.ui};
  if(s.ui.selectedInstanceId){const c=s.players.player.hand.find(c=>c.instanceId===s.ui.selectedInstanceId);if(c){selected=selectCard(s,c);selected.target=s.ui.selectionSource||null;}}
- const root=el('section',{class:'formal-minigame cards-game plaid-sides','aria-label':'卡牌決鬥'}),stage=el('div',{class:'cards-stage',style:`background-image:url("${cardAssetURL('CARD_BATTLEFIELD_TAVERN')}")`}),status=text('div','','cards-status'),controls=el('div',{class:'cards-controls'}),dynamic=el('div',{class:'cards-dynamic'}),zone=el('div',{class:'cards-validation-zone','aria-label':'戰場出牌區'}),choices=el('div',{class:'cards-choices','aria-live':'polite'}),message=text('div','','cards-message');
+ const root=el('section',{class:'formal-minigame cards-game plaid-sides','aria-label':'卡牌決鬥'}),stage=el('div',{class:'cards-stage'}),status=text('div','','cards-status'),controls=el('div',{class:'cards-controls'}),dynamic=el('div',{class:'cards-dynamic'}),zone=el('div',{class:'cards-validation-zone','aria-label':'戰場出牌區'}),choices=el('div',{class:'cards-choices','aria-live':'polite'}),message=text('div','','cards-message');
  const roundLabel=text('div','','cards-round-label'),hudRow=el('div',{class:'cards-hud-row'}),playerScore=text('strong','','cards-score-number'),enemyScore=text('strong','','cards-score-number');
  status.style.cssText=rectStyle(BATTLEFIELD_LAYOUT.hud);status.append(roundLabel,hudRow);hudRow.append(el('div',{class:'cards-score player-score'},playerScore,text('small','我方屎意')),message,el('div',{class:'cards-score enemy-score'},enemyScore,text('small','敵方屎意')));
  const endButton=gameButton('',()=>commit(()=>endDeploy(s),{}),{class:'cards-end-deploy primary','aria-label':'結束布陣'});endButton.append(text('span','結束'),text('span','布陣'));
- root.append(stage);stage.append(zone,dynamic,status,choices,controls,endButton);host.append(root);
+ setImageBackground(stage,cardAssets.CARD_BATTLEFIELD_TAVERN);root.append(stage);stage.append(zone,dynamic,status,choices,controls,endButton);host.append(root);
  function locked(){return busy||thinking||s.resultLocked||!!root.dataset.occupancyError;}
  function inspect(c){if(s.resultLocked||busy)return;viewer=fullCardDialog(c,()=>{viewer=null;});root.append(viewer);viewer.showModal();}
  function rules(){const d=el('dialog',{class:'cards-rules','aria-label':'決鬥規則'},text('h2','決鬥規則'),...RULES_TEXT.flatMap(([h,p])=>[text('h3',h),text('p',p)]),gameButton('關閉',()=>d.close()));d.addEventListener('close',()=>d.remove());root.append(d);d.showModal();}
