@@ -1,4 +1,4 @@
-// Public runtime catalog — Playtest v0.6.3.
+// Public runtime catalog — Playtest v0.6.8.
 export const catalog = {
   "records": {
     "NODE-RES-DRGN-001": [

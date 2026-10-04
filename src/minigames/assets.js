@@ -27,7 +27,7 @@ export const minigameAssets={
     "obstacle1": "assets/minigames/runner/obstacle1.png",
     "obstacle2": "assets/minigames/runner/obstacle2.png",
     "recovery": "assets/minigames/runner/recovery.png",
-    "chaserCrowd": "assets/minigames/runner/road.png"
+    "chaserCrowd": "assets/minigames/runner/chaserCrowd.png"
   }
 };
-export const assetURL=path=>new URL("../../"+path,import.meta.url).href;
+export const assetURL=path=>{const url=new URL("../../"+path,import.meta.url);if(path.includes('/runner/'))url.searchParams.set('v','066');return url.href;};

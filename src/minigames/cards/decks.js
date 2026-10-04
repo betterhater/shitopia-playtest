@@ -1,0 +1,8 @@
+export const decks={
+ DUEL:{CE001:1,CE002:1,IE001:1,IE003:1,IE004:1,IE005:1,LM001:2,LM002:1,LM003:1,LM004:1,LM011:1,LM012:1,UM001:1,UM002:1},
+ GREAT:{CE003:1,IE002:1,IE006:1,IE007:1,IE008:1,LM006:2,LM007:2,LM008:1,LM009:1,LM010:1,SP001:1,SP002:1,SP003:1},
+ CHAMPION:{CE004:1,CE005:1,IE004:1,IE005:1,IE009:1,IE010:1,LM001:1,LM002:1,LM005:1,LM011:1,LM013:1,LM014:2,UM003:1,UM004:1}
+};
+export const championOrder=['LM013','IE005','IE004','CE004','LM014','UM003','IE009','IE010','LM005','UM004','CE005','LM002','LM014','LM011','LM001'];
+export const expandDeck=id=>Object.entries(decks[id]).flatMap(([cardId,count])=>Array(count).fill(cardId));
+export const enemyProfiles={CARD_ENEMY_CHAMPION:{deck:'CHAMPION',order:championOrder},CARD_ENEMY_DRUNK:{status:'OPEN DATA',label:'酒客資料待定'}};
