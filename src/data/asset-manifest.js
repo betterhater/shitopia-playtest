@@ -290,5 +290,55 @@ export const assetManifest = {
   "END-ZD": {
     "name": "屎亡遊戲",
     "path": "assets/endings/END-ZD.png"
+  },
+
+  "SPR-NPC-001-REALISTIC-DRGN": {
+    "name": "巨龍寫實主角",
+    "path": "assets/characters/SPR-NPC-001-REALISTIC-DRGN.png",
+    "fallbackPath": "assets/characters/SPR-NPC-001-DRGN.png",
+    "nativeFacing": "left",
+    "doNotAutoFlip": true
+  },
+  "IMG-RES-REALISTIC-DRGN": {
+    "name": "巨龍寫實測驗結果",
+    "path": "assets/results/IMG-RES-REALISTIC-DRGN.png",
+    "fallbackPath": "assets/results/IMG-RES-DRGN.png"
+  },
+  "SPR-NPC-001-REALISTIC-SHPB": {
+    "name": "羊便便寫實主角",
+    "path": "assets/characters/SPR-NPC-001-REALISTIC-SHPB.png",
+    "fallbackPath": "assets/characters/SPR-NPC-001-SHPB.png",
+    "nativeFacing": "left",
+    "doNotAutoFlip": true
+  },
+  "IMG-RES-REALISTIC-SHPB": {
+    "name": "羊便便寫實測驗結果",
+    "path": "assets/results/IMG-RES-REALISTIC-SHPB.png",
+    "fallbackPath": "assets/results/IMG-RES-SHPB.png"
+  },
+  "SPR-NPC-001-REALISTIC-SOUP": {
+    "name": "屎湯寫實主角",
+    "path": "assets/characters/SPR-NPC-001-REALISTIC-SOUP.png",
+    "fallbackPath": "assets/characters/SPR-NPC-001-SOUP.png",
+    "nativeFacing": "left",
+    "doNotAutoFlip": true
+  },
+  "IMG-RES-REALISTIC-SOUP": {
+    "name": "屎湯寫實測驗結果",
+    "path": "assets/results/IMG-RES-REALISTIC-SOUP.png",
+    "fallbackPath": "assets/results/IMG-RES-SOUP.png"
+  },
+  "SPR-NPC-001-REALISTIC-STIC": {
+    "name": "牽絲寫實主角",
+    "path": "assets/characters/SPR-NPC-001-REALISTIC-STIC.png",
+    "fallbackPath": "assets/characters/SPR-NPC-001-STIC.png",
+    "nativeFacing": "left",
+    "doNotAutoFlip": true
+  },
+  "IMG-RES-REALISTIC-STIC": {
+    "name": "牽絲寫實測驗結果",
+    "path": "assets/results/IMG-RES-REALISTIC-STIC.png",
+    "fallbackPath": "assets/results/IMG-RES-STIC.png"
   }
+
 };

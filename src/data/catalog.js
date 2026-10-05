@@ -1,4 +1,4 @@
-// Public runtime catalog — Playtest v0.6.8.
+// Public runtime catalog — Playtest v0.6.9.
 export const catalog = {
   "records": {
     "NODE-RES-DRGN-001": [
@@ -4111,7 +4111,7 @@ export const catalog = {
   "quiz": [
     {
       "id": "QST-01",
-      "text": "這天你來到便利商店，打算買些東西當成午飯，卻拿好商品後卻發現自己忘記帶錢，你會怎麼做？",
+      "text": "這天你來到便利商店，打算買些東西當成午飯，拿好商品後卻發現自己忘記帶錢，你會怎麼做？",
       "options": [
         {
           "id": "QOPT-01-01",
@@ -4342,9 +4342,10 @@ export const catalog = {
       "missing": false
     },
     "IMG-RES-REALISTIC-DRGN": {
+      "name": "巨龍寫實測驗結果",
       "path": "assets/results/IMG-RES-REALISTIC-DRGN.png",
-      "name": "巨龍寫實結果",
-      "missing": true
+      "fallbackPath": "assets/results/IMG-RES-DRGN.png",
+      "missing": false
     },
     "RAC-SOUP": {
       "name": "屎湯",
@@ -4369,9 +4370,10 @@ export const catalog = {
       "missing": false
     },
     "IMG-RES-REALISTIC-SOUP": {
+      "name": "屎湯寫實測驗結果",
       "path": "assets/results/IMG-RES-REALISTIC-SOUP.png",
-      "name": "屎湯寫實結果",
-      "missing": true
+      "fallbackPath": "assets/results/IMG-RES-SOUP.png",
+      "missing": false
     },
     "RAC-SHPB": {
       "name": "羊便便",
@@ -4396,9 +4398,10 @@ export const catalog = {
       "missing": false
     },
     "IMG-RES-REALISTIC-SHPB": {
+      "name": "羊便便寫實測驗結果",
       "path": "assets/results/IMG-RES-REALISTIC-SHPB.png",
-      "name": "羊便便寫實結果",
-      "missing": true
+      "fallbackPath": "assets/results/IMG-RES-SHPB.png",
+      "missing": false
     },
     "RAC-STIC": {
       "name": "牽絲",
@@ -4423,9 +4426,10 @@ export const catalog = {
       "missing": false
     },
     "IMG-RES-REALISTIC-STIC": {
+      "name": "牽絲寫實測驗結果",
       "path": "assets/results/IMG-RES-REALISTIC-STIC.png",
-      "name": "牽絲寫實結果",
-      "missing": true
+      "fallbackPath": "assets/results/IMG-RES-STIC.png",
+      "missing": false
     },
     "IMG-UI-TOILET": {
       "name": "馬桶",
@@ -4799,6 +4803,38 @@ export const catalog = {
     "END-ZD": {
       "name": "屎亡遊戲",
       "path": "assets/endings/END-ZD.png",
+      "missing": false
+    },
+    "SPR-NPC-001-REALISTIC-DRGN": {
+      "name": "巨龍寫實主角",
+      "path": "assets/characters/SPR-NPC-001-REALISTIC-DRGN.png",
+      "fallbackPath": "assets/characters/SPR-NPC-001-DRGN.png",
+      "nativeFacing": "left",
+      "doNotAutoFlip": true,
+      "missing": false
+    },
+    "SPR-NPC-001-REALISTIC-SHPB": {
+      "name": "羊便便寫實主角",
+      "path": "assets/characters/SPR-NPC-001-REALISTIC-SHPB.png",
+      "fallbackPath": "assets/characters/SPR-NPC-001-SHPB.png",
+      "nativeFacing": "left",
+      "doNotAutoFlip": true,
+      "missing": false
+    },
+    "SPR-NPC-001-REALISTIC-SOUP": {
+      "name": "屎湯寫實主角",
+      "path": "assets/characters/SPR-NPC-001-REALISTIC-SOUP.png",
+      "fallbackPath": "assets/characters/SPR-NPC-001-SOUP.png",
+      "nativeFacing": "left",
+      "doNotAutoFlip": true,
+      "missing": false
+    },
+    "SPR-NPC-001-REALISTIC-STIC": {
+      "name": "牽絲寫實主角",
+      "path": "assets/characters/SPR-NPC-001-REALISTIC-STIC.png",
+      "fallbackPath": "assets/characters/SPR-NPC-001-STIC.png",
+      "nativeFacing": "left",
+      "doNotAutoFlip": true,
       "missing": false
     }
   },

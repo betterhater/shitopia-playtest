@@ -131,5 +131,15 @@ export const imageVariants = Object.freeze({
   "assets/results/IMG-RES-SHPB.png": "assets/results/IMG-RES-SHPB.webp",
   "assets/results/IMG-RES-SOUP.png": "assets/results/IMG-RES-SOUP.webp",
   "assets/results/IMG-RES-STIC.png": "assets/results/IMG-RES-STIC.webp",
-  "assets/ui/IMG-UI-TOILET.png": "assets/ui/IMG-UI-TOILET.webp"
+  "assets/ui/IMG-UI-TOILET.png": "assets/ui/IMG-UI-TOILET.webp",
+
+  "assets/characters/SPR-NPC-001-REALISTIC-DRGN.png": "assets/characters/SPR-NPC-001-REALISTIC-DRGN.webp",
+  "assets/results/IMG-RES-REALISTIC-DRGN.png": "assets/results/IMG-RES-REALISTIC-DRGN.webp",
+  "assets/characters/SPR-NPC-001-REALISTIC-SHPB.png": "assets/characters/SPR-NPC-001-REALISTIC-SHPB.webp",
+  "assets/results/IMG-RES-REALISTIC-SHPB.png": "assets/results/IMG-RES-REALISTIC-SHPB.webp",
+  "assets/characters/SPR-NPC-001-REALISTIC-SOUP.png": "assets/characters/SPR-NPC-001-REALISTIC-SOUP.webp",
+  "assets/results/IMG-RES-REALISTIC-SOUP.png": "assets/results/IMG-RES-REALISTIC-SOUP.webp",
+  "assets/characters/SPR-NPC-001-REALISTIC-STIC.png": "assets/characters/SPR-NPC-001-REALISTIC-STIC.webp",
+  "assets/results/IMG-RES-REALISTIC-STIC.png": "assets/results/IMG-RES-REALISTIC-STIC.webp"
+
 });
